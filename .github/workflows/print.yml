@@ -2,10 +2,15 @@ name: First CI Pipeline
 
 on:
   workflow_dispatch: # Manual trigger
+    inputs:
+      name:
+        description: "Enter your name"
+        required: false
+        default: "sample"
 
 jobs:
   print-job:
     runs-on: ubuntu-latest # runner/vm to execute on
     steps:
       - name: print a message
-        run: echo "Hello from GitHub Actions!"
+        run: echo "Hello ${{ github.event.inputs.name }} this is your first pipeline."
