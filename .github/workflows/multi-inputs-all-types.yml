@@ -1,0 +1,37 @@
+name: Ci Pipeline for multi-inputs-with-all-types
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name"
+        required: false
+        default: "sample"
+        type: string
+
+      environment:
+        description: "Select the environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - qa
+          - staging
+          - prod
+
+      notify:
+        description: "send notification?"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  print-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print all inputs
+        run: |
+          echo "Hi ${{ github.event.inputs.name }} in your pipeline,"
+          echo "You selected ${{ github.event.inputs.environment }} environment"
+          echo "Notification enabled: ${{ github.event.inputs.notify }}"
