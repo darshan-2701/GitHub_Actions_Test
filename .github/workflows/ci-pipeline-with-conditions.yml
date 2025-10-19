@@ -44,7 +44,7 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.environment}}" == "prod" ]; then
             echo "value=true" >> $GITHUB_OUTPUT
-          else:
+          else
             echo "value=false" >> $GITHUB_OUTPUT
           fi
 
