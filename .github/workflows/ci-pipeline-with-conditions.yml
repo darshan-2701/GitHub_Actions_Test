@@ -26,10 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Name check
-        if: ${{ github.event.inputs.name == "admin" && fromJson(github.event.inputs.age) > 30 }}
+        if: ${{ github.event.inputs.name == 'admin' && fromJson(github.event.inputs.age) > 30 }}
         run: echo "You have admin access"
 
       - name: Environment check
-        if: ${{ github.event.inputs.environment == "prod"}}
+        if: ${{ github.event.inputs.environment == 'prod'}}
         run: echo "Running in prod environment"
   
