@@ -1,0 +1,22 @@
+name: CI Pipeline for multi-inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name"
+        required: false
+        default: "sample"
+
+      age:
+        description: "Enter your age"
+        required: false
+        default: "22"
+
+jobs:
+  print-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print user details
+        run: echo "Hi {{ github.event.inputs.name }} your age is {{ github.event.inputs.age }}"
+        
