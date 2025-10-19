@@ -1,0 +1,11 @@
+name: First CI Pipeline
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  print-job:
+    runs-on: ubuntu-latest # runner/vm to execute on
+    steps:
+      - name: print a message
+        run: echo "Hello from GitHub Actions!"
