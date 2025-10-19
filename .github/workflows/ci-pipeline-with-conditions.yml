@@ -26,10 +26,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Name check
-        if: ${{ github.event.inputs.name == 'admin' && fromJson(github.event.inputs.age) > 30 }}
+        if: ${{ github.event.inputs.name == 'admin' && fromJson(github.event.inputs.age) >= 30 }}
         run: echo "You have admin access"
 
       - name: Environment check
         if: ${{ github.event.inputs.environment == 'prod'}}
         run: echo "Running in prod environment"
-  
+        
+  output-build:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy_allow: ${{ steps.condition.outputs.value }}
+
+    steps:
+      - name: Check Deployment
+        id: condition
+        run: |
+          if [ "${{ github.event.inputs.environment}}" == "prod" ]; then
+            echo "value=true" >> $GITHUB_OUTPUT
+          else:
+            echo "value=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: print output
+        run: echo "Deployment allowed:${{ steps.condition.outputs.value }}"
+      
