@@ -3,7 +3,7 @@ name: Hello world workflow
 on:
   push:
     branches:
-      - main
+       - main
 	
 jobs:
   print-hello-world:
@@ -19,6 +19,6 @@ jobs:
           echo ls -a
           
       - name: Print Hello
-        run: echo "Hi your pushed to main branch"
+        run: echo "Hi, you're pushed to the main branch"
 			  
 			
