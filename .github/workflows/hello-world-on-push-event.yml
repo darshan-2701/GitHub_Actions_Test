@@ -3,22 +3,20 @@ name: Hello world workflow
 on:
   push:
     branches:
-       - main
-	
+      - main
+
 jobs:
   print-hello-world:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: print files in folder
+
+      - name: Print files in folder
         run: |
-          echo pwd
-          echo ls -a
-          
+          pwd
+          ls -a
+
       - name: Print Hello
         run: echo "Hi, you're pushed to the main branch"
-			  
-			
